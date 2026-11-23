@@ -1,4 +1,5 @@
 import { About } from "@/components/about";
+import { Contact } from "@/components/contact";
 import { Hero } from "@/components/hero";
 import { Navbar } from "@/components/navigation";
 import { SelectedWork } from "@/components/portfolio";
@@ -7,7 +8,7 @@ import { Services } from "@/components/services";
 import { Showreel } from "@/components/showreel";
 
 /**
- * Homepage through Phase 7 — hero through process.
+ * Homepage through Phase 8 — full story through contact inquiry.
  */
 export default function HomePage() {
   return (
@@ -20,9 +21,7 @@ export default function HomePage() {
         <Services />
         <About />
         <Process />
-
-        {/* Future section anchors */}
-        <div id="contact" className="h-px scroll-mt-24" aria-hidden />
+        <Contact />
       </main>
     </>
   );
