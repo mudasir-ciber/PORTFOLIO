@@ -4,7 +4,7 @@ import { SelectedWork } from "@/components/portfolio";
 import { Showreel } from "@/components/showreel";
 
 /**
- * PHASE 3 — Showreel + portfolio media foundation on the homepage.
+ * Homepage through Phase 4 — hero, showreel, selected work.
  */
 export default function HomePage() {
   return (

@@ -40,3 +40,5 @@ export function toProjectDetail(project: Project): ProjectDetail {
     featured: project.featured ?? false,
   };
 }
+
+export { getPortfolioProjects } from "@/lib/projects";

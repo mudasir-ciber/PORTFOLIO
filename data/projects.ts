@@ -39,6 +39,10 @@ export type Project = {
   year?: number | null;
   tools?: string[];
   featured?: boolean;
+  /** True only for local layout fixtures — never real client work */
+  isDemo?: boolean;
+  /** Optional visual weight hint for editorial grids */
+  size?: "full" | "large" | "medium";
   /** Case-study fields for future detail views */
   challenge?: string | null;
   approach?: string | null;
