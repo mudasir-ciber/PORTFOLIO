@@ -2,11 +2,12 @@ import { About } from "@/components/about";
 import { Hero } from "@/components/hero";
 import { Navbar } from "@/components/navigation";
 import { SelectedWork } from "@/components/portfolio";
+import { Process } from "@/components/process";
 import { Services } from "@/components/services";
 import { Showreel } from "@/components/showreel";
 
 /**
- * Homepage through Phase 6 — hero, showreel, work, services, about.
+ * Homepage through Phase 7 — hero through process.
  */
 export default function HomePage() {
   return (
@@ -18,9 +19,9 @@ export default function HomePage() {
         <SelectedWork />
         <Services />
         <About />
+        <Process />
 
         {/* Future section anchors */}
-        <div id="process" className="h-px scroll-mt-24" aria-hidden />
         <div id="contact" className="h-px scroll-mt-24" aria-hidden />
       </main>
     </>
