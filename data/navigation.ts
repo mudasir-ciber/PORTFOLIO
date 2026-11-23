@@ -5,6 +5,12 @@ export const navLinks = [
   { label: "Process", href: "#process" },
 ] as const;
 
+/** Footer includes Contact — navbar uses primaryCta for that destination */
+export const footerNavLinks = [
+  ...navLinks,
+  { label: "Contact", href: "#contact" },
+] as const;
+
 export const primaryCta = {
   label: "Let's Work Together",
   href: "#contact",

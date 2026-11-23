@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { DM_Sans, Syne } from "next/font/google";
 import { MotionProvider } from "@/components/providers/MotionProvider";
-import { siteConfig } from "@/data/site";
+import { PersonJsonLd } from "@/components/seo";
+import { buildPageMetadata } from "@/lib/seo";
 import "./globals.css";
 
 const syne = Syne({
@@ -18,10 +19,7 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: siteConfig.title,
-  description: siteConfig.description,
-};
+export const metadata: Metadata = buildPageMetadata();
 
 export default function RootLayout({
   children,
@@ -34,6 +32,7 @@ export default function RootLayout({
       className={`${syne.variable} ${dmSans.variable} h-full antialiased`}
     >
       <body className="app-root min-h-full flex flex-col bg-bg text-text font-sans">
+        <PersonJsonLd />
         <MotionProvider>{children}</MotionProvider>
       </body>
     </html>

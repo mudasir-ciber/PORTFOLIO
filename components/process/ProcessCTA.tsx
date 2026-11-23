@@ -15,8 +15,14 @@ export function ProcessCTA() {
           <h3 className="text-h3 mt-3 text-text">{processContent.ctaTitle}</h3>
           <p className="text-body-lg mt-3">{processContent.ctaDescription}</p>
         </div>
-        <ButtonLink href={processContent.ctaHref} size="lg">
-          {processContent.ctaLabel} →
+        <ButtonLink href={processContent.ctaHref} size="lg" className="group">
+          {processContent.ctaLabel}
+          <span
+            aria-hidden
+            className="inline-block transition-transform duration-[var(--duration-fast)] ease-[var(--ease-out)] group-hover:translate-x-1"
+          >
+            →
+          </span>
         </ButtonLink>
       </div>
     </Reveal>

@@ -83,7 +83,7 @@ export function Contact() {
                 <div className="absolute bottom-4 right-4 h-2.5 w-2.5 border-b border-r border-accent/70" />
                 <div className="absolute inset-0 flex items-end justify-between p-5">
                   <p className="text-label text-text-secondary">Inquiry lane</p>
-                  <p className="text-label text-text-muted">OPEN</p>
+                  <p className="text-label text-text-muted">FRAME</p>
                 </div>
               </div>
             </Reveal>

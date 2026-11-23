@@ -70,8 +70,18 @@ export function Services() {
                 {servicesContent.ctaDescription}
               </p>
             </div>
-            <ButtonLink href={servicesContent.ctaHref} size="lg">
-              {servicesContent.ctaLabel} →
+            <ButtonLink
+              href={servicesContent.ctaHref}
+              size="lg"
+              className="group"
+            >
+              {servicesContent.ctaLabel}
+              <span
+                aria-hidden
+                className="inline-block transition-transform duration-[var(--duration-fast)] ease-[var(--ease-out)] group-hover:translate-x-1"
+              >
+                →
+              </span>
             </ButtonLink>
           </div>
         </Reveal>

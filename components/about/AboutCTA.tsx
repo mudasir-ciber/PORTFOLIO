@@ -13,8 +13,14 @@ export function AboutCTA() {
           <h3 className="text-h3 mt-3 text-text">{aboutContent.ctaTitle}</h3>
           <p className="text-body-lg mt-3">{aboutContent.ctaDescription}</p>
         </div>
-        <ButtonLink href={aboutContent.ctaHref} size="lg">
-          {aboutContent.ctaLabel} →
+        <ButtonLink href={aboutContent.ctaHref} size="lg" className="group">
+          {aboutContent.ctaLabel}
+          <span
+            aria-hidden
+            className="inline-block transition-transform duration-[var(--duration-fast)] ease-[var(--ease-out)] group-hover:translate-x-1"
+          >
+            →
+          </span>
         </ButtonLink>
       </div>
     </Reveal>
