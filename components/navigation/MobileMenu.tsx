@@ -90,7 +90,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
               </button>
             </div>
 
-            <nav aria-label="Mobile" className="mt-12 flex flex-1 flex-col">
+            <nav aria-label="Mobile primary" className="mt-12 flex flex-1 flex-col overflow-y-auto">
               <ul className="flex flex-col gap-2">
                 {navLinks.map((link, index) => (
                   <li key={link.href}>

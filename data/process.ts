@@ -22,7 +22,7 @@ export const processContent = {
     "A clear path from brief to delivery — structure, craft, and review so every sequence earns its place.",
   ctaEyebrow: "Ready when you are",
   ctaTitle: "Ready to turn the footage into something worth watching?",
-  ctaDescription: "Share the goal, the footage, and the story — we’ll shape the rest.",
+  ctaDescription: "Share the goal, the footage, and the story — I’ll shape the rest.",
   ctaLabel: "Start a Project",
   ctaHref: "#contact",
 } as const;

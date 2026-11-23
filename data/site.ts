@@ -1,7 +1,16 @@
 /**
  * Site-level config + SEO foundation.
- * Set `siteUrl` and OG image when the production domain is known.
+ * Set `siteUrl` / env `NEXT_PUBLIC_SITE_URL` and OG image when deploying.
  */
+
+function readSiteUrl() {
+  const fromEnv = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (fromEnv) {
+    return fromEnv.replace(/\/$/, "");
+  }
+  return null;
+}
+
 export const siteConfig = {
   name: "Mudasir",
   role: "Video Editor",
@@ -12,22 +21,22 @@ export const siteConfig = {
   email: null as string | null,
   whatsapp: null as string | null,
   /**
-   * Production origin without trailing slash, e.g. "https://mudasir.studio"
-   * Leave null until deployment domain is known.
+   * Production origin without trailing slash.
+   * Prefer NEXT_PUBLIC_SITE_URL in the host environment, or set here.
    */
-  siteUrl: null as string | null,
+  siteUrl: readSiteUrl() as string | null,
   /**
    * Social preview image under /public when available.
-   * Example: "/images/og.jpg"
+   * Example: "/images/og/og.jpg"
    */
   ogImage: null as string | null,
   /**
    * When true, injects clearly labeled DEMO fixtures from data/projects.demo.ts
-   * for layout testing. Keep false until you want to preview the filled grid.
+   * for layout testing. Keep false in production.
    */
   showDemoProjects: false,
   locale: "en_US",
-} as const;
+};
 
 export function getMetadataBase() {
   if (siteConfig.siteUrl) {

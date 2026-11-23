@@ -50,6 +50,26 @@ export function VideoPlayer({
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [showControls, setShowControls] = useState(true);
+  const [trackedSrc, setTrackedSrc] = useState(src);
+  const [trackedMuted, setTrackedMuted] = useState(muted);
+
+  // Reset playback state when the source changes (render-time sync — no effect setState)
+  if (src !== trackedSrc) {
+    setTrackedSrc(src);
+    setHasError(false);
+    setIsLoading(Boolean(src));
+    setIsPlaying(false);
+    setProgress(0);
+    setCurrentTime(0);
+    setDuration(0);
+    setIsMuted(muted);
+    setTrackedMuted(muted);
+  }
+
+  if (muted !== trackedMuted) {
+    setTrackedMuted(muted);
+    setIsMuted(muted);
+  }
 
   const hasSource = Boolean(src);
 
@@ -104,20 +124,12 @@ export function VideoPlayer({
     setProgress(value);
   };
 
+  // Keep the DOM muted attribute in sync without React setState
   useEffect(() => {
-    setIsMuted(muted);
-    if (videoRef.current) {
-      videoRef.current.muted = muted;
-    }
-  }, [muted]);
-
-  useEffect(() => {
-    setHasError(false);
-    setIsLoading(Boolean(src));
-    setIsPlaying(false);
-    setProgress(0);
-    setCurrentTime(0);
-  }, [src]);
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = isMuted;
+  }, [isMuted]);
 
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === " " || event.key === "k") {
@@ -131,6 +143,16 @@ export function VideoPlayer({
     if (event.key === "f") {
       event.preventDefault();
       void toggleFullscreen();
+    }
+  };
+
+  const hideControlsIfHoverDevice = () => {
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+      isPlaying
+    ) {
+      setShowControls(false);
     }
   };
 
@@ -155,7 +177,8 @@ export function VideoPlayer({
         className,
       )}
       onMouseEnter={() => setShowControls(true)}
-      onMouseLeave={() => setShowControls(isPlaying ? false : true)}
+      onMouseLeave={hideControlsIfHoverDevice}
+      onFocus={() => setShowControls(true)}
       onKeyDown={onKeyDown}
       tabIndex={0}
       role="region"

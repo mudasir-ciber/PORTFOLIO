@@ -6,7 +6,7 @@ export const portfolioContent = {
   eyebrow: "Selected work",
   titleLines: ["Work that speaks", "before I do."],
   description:
-    "A curated selection of edits across YouTube, short-form, and cinematic formats — proof before pitch.",
+    "Selected edits across YouTube, short-form, and cinematic formats — each piece added here is real work.",
   emptyTitle: "Selected work is being prepared.",
   emptyDescription:
     "Real projects, thumbnails, and cuts will land here. The system is ready — the frames are waiting for the footage.",

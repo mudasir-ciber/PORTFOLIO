@@ -62,6 +62,20 @@ export function ProjectInquiryForm() {
     if (!validation.ok) {
       setErrors(validation.errors);
       setStatus({ type: "idle" });
+      const fieldMap: Record<string, string> = {
+        name: `${formId}-name`,
+        email: `${formId}-email`,
+        projectType: `${formId}-type`,
+        budget: `${formId}-budget`,
+        details: `${formId}-details`,
+        projectLink: `${formId}-link`,
+      };
+      const firstKey = Object.keys(validation.errors)[0];
+      if (firstKey && fieldMap[firstKey]) {
+        window.requestAnimationFrame(() => {
+          document.getElementById(fieldMap[firstKey])?.focus();
+        });
+      }
       return;
     }
 
@@ -229,14 +243,18 @@ export function ProjectInquiryForm() {
           placeholder="https://"
         />
 
-        {/* Honeypot */}
-        <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden>
+        {/* Honeypot — hidden from assistive tech and pointer users */}
+        <div
+          className="pointer-events-none absolute -left-[9999px] h-px w-px overflow-hidden opacity-0"
+          aria-hidden="true"
+        >
           <label htmlFor={`${formId}-website`}>Website</label>
           <input
             id={`${formId}-website`}
             name="website"
             tabIndex={-1}
             autoComplete="off"
+            aria-hidden="true"
             value={values.website ?? ""}
             onChange={(event) => updateField("website", event.target.value)}
           />
